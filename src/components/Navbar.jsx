@@ -24,7 +24,7 @@ const Navbar = () => {
                 {/* Desktop Nav */}
                 <div className="hidden md:flex space-x-8 text-md font-semibold text-white tracking-wider">
                     {["Home", "About", "Projects", "Contact"].map((item) => (
-                        <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-white hover:text-gray-300">
+                        <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-white hover:text-gray-500">
                             {item}
                             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300 group-hover:w-full"></span>
                         </a>
@@ -50,20 +50,34 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, x: -200 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -200 }}
                         transition={{ duration: 0.3 }}
-                        className="md:hidden bg-gray-900 px-6 pb-6 pt-4 rounded-b-xl shadow-lg border-t border-gray-700"
+                        className="md:hidden absolute left-0 top-0 h-screen  bg-gray-900 px-6 pb-6 pt-4 rounded-r-xl shadow-lg border-t border-gray-700 w-64"
                     >
-                        {["Home", "About", "Projects", "Contact"].map((item) => (
-                            <a key={item} href={`#${item.toLowerCase()}`} className="block text-white text-lg font-medium py-2 hover:text-gray-300">
-                                {item}
+                        <div className="text-xl font-bold text-white flex items-center space-x-2">
+                            <img src={kartik} alt="Logo" className="w-10 h-auto rounded-full border-2 border-purple-500 shadow-lg" />
+                            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-transparent bg-clip-text font-extrabold text-lg">
+                                Kartik
+                            </span>
+                        </div>
+
+
+                        <div className='flex flex-col justify-center space-y-7'>
+
+
+                            <div className='mt-10'></div>
+
+                            {["Home", "About", "Projects", "Contact"].map((item) => (
+                                <a key={item} href={`#${item.toLowerCase()}`} className="block text-white text-lg font-medium py-2 hover:text-gray-300">
+                                    {item}
+                                </a>
+                            ))}
+                            <a href="path-to-your-resume.pdf" download className="block text-center mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold py-2 px-6 rounded-lg transition duration-300 hover:opacity-80">
+                                Download Resume
                             </a>
-                        ))}
-                        <a href="path-to-your-resume.pdf" download className="block text-center mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold py-2 px-6 rounded-lg transition duration-300 hover:opacity-80">
-                            Download Resume
-                        </a>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

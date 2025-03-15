@@ -1,78 +1,89 @@
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+import { FaJava, FaReact, FaDatabase, FaJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
+import { SiSpringboot, SiTailwindcss } from "react-icons/si";
+
+const techIcons = [
+  { icon: <FaJava />, color: "#f89820" },
+  { icon: <FaReact />, color: "#61DBFB" },
+  { icon: <FaDatabase />, color: "#00758F" },
+  { icon: <FaJs />, color: "#F7DF1E" },
+  { icon: <FaHtml5 />, color: "#E34F26" },
+  { icon: <FaCss3Alt />, color: "#1572B6" },
+  { icon: <SiSpringboot />, color: "#6DB33F" },
+  { icon: <SiTailwindcss />, color: "#38B2AC" },
+];
+
+const generateRandomPosition = () => ({
+  x: Math.random() * window.innerWidth - window.innerWidth / 2,
+  y: Math.random() * window.innerHeight - window.innerHeight / 2,
+});
 
 const Hero = () => {
   return (
-    <div
-      id="home"
-      className="relative bg-cover bg-center h-screen flex flex-col justify-center items-center text-white overflow-hidden"
-      style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg')", fontFamily: 'Roboto, sans-serif' }}
-    >
-      {/* Glassmorphism Overlay */}
-      <div className="absolute inset-0 bg-white bg-opacity-75 backdrop-blur-xl"></div>
+    <div className="relative h-[80vh] md:h-[70vh] flex flex-col justify-center items-center text-white overflow-hidden bg-black">
+      {/* Floating Tech Icons */}
+      {techIcons.map((tech, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-5xl opacity-70"
+          style={{ color: tech.color }}
+          initial={generateRandomPosition()}
+          animate={{
+            x: [
+              Math.random() * window.innerWidth - window.innerWidth / 2,
+              Math.random() * window.innerWidth - window.innerWidth / 2,
+            ],
+            y: [
+              Math.random() * window.innerHeight - window.innerHeight / 2,
+              Math.random() * window.innerHeight - window.innerHeight / 2,
+            ],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 6 + Math.random() * 4,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {tech.icon}
+        </motion.div>
+      ))}
 
       {/* Hero Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 container mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between"
-      >
-        {/* Text Section */}
-        <div className="text-center md:text-left md:w-1/2">
-          <h1 className="text-5xl font-extrabold mb-4 text-gray-900">
-            Hi, I'm{' '}
-            <span className="bg-gradient-to-r from-purple-500 to-indigo-500 text-transparent bg-clip-text">
-              Kartik Ade
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-2 text-gray-800">
-            I'm a Software Developer specialized in{' '}
-           
-          </p>
-          <p className='text-xl md:text-2xl mb-6 text-gray-800'>
+      <div className="relative z-10 container mx-auto px-6 py-12 text-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-yellow-400">
+          Hi, I'm{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+            Kartik Ade
+          </span>
+        </h1>
+        <p className="text-lg md:text-xl mb-3 text-gray-200">
+          I'm a Software Developer specialized in{" "}
+        </p>
+
+        {/* Type Animation for Full Stack Development */}
+        <p className="text-xl md:text-2xl font-semibold mb-6 text-yellow-400">
           <TypeAnimation
-              sequence={[
-                'Frontend Development',
-                2000,
-                'Backend Development',
-                2000,
-                'Full Stack Development',
-                2000,
-              ]}
-              wrapper="span"
-              cursor={true}
-              repeat={Infinity}
-              style={{ display: 'inline-block', color: 'black', fontWeight: 'bold' }}
-            />
-          </p>
-
-          {/* CTA Button */}
-          <motion.a
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            href="#contact"
-            className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:opacity-80 transition duration-300 tracking-wider"
-          >
-            Contact Me
-          </motion.a>
-        </div>
-
-        {/* Image Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
-          className="mt-8 md:mt-0 md:w-1/2 flex justify-center"
-        >
-          <img
-            src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg"
-            alt="Developer"
-            className="rounded-lg shadow-2xl w-full max-w-md"
+            sequence={[
+              "Full Stack Development", 2000,
+              "Frontend Development", 2000,
+              "Backend Development", 2000,
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
           />
-        </motion.div>
-      </motion.div>
+        </p>
+
+        <a
+          href="#contact"
+          className="inline-block bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:scale-105 transition transform duration-300"
+        >
+          Contact Me
+        </a>
+      </div>
     </div>
   );
 };

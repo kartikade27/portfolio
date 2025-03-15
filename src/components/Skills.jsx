@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const skills = [
   'HTML', 'CSS', 'JavaScript', 'React', 'Java', 'Servlet', 'JSP',
@@ -12,22 +11,23 @@ const Skills = () => {
       <div className="container mx-auto px-6 text-center">
         {/* Title */}
         <h2 className="text-4xl font-extrabold text-white mb-12">
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-            My Skills
+          My
+          <span className="bg-gradient-to-r ml-2 from-blue-400 to-purple-500 text-transparent bg-clip-text">
+            Skills
           </span>
         </h2>
 
         {/* Skills Grid */}
         <div className="flex flex-wrap justify-center gap-4">
           {skills.map((skill, index) => (
-            <motion.div
+            <div
               key={index}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white bg-opacity-10 backdrop-blur-lg text-gray-900 px-6 py-3 rounded-full shadow-lg hover:bg-opacity-30 transition duration-300 text-sm font-semibold tracking-wide"
+              className="bg-white bg-opacity-10  text-gray-900 px-6 py-3 rounded-full shadow-lg hover:bg-opacity-30 transition duration-300 text-sm font-semibold tracking-wide"
             >
               {skill}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

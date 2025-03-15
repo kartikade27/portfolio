@@ -1,24 +1,25 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from "react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <motion.footer
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-gray-100 py-10"
-            style={{ fontFamily: 'Roboto, sans-serif' }}
-        >
+        <footer className="bg-gray-100 py-10 font-roboto">
             <div className="container mx-auto px-6 text-gray-900">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     {/* Navigation Links */}
                     <nav className="mb-6 md:mb-0 space-x-4 text-gray-900">
-                        <a href="#home" className="hover:text-black transition duration-300">Home</a>
-                        <a href="#about" className="hover:text-black transition duration-300">About</a>
-                        <a href="#projects" className="hover:text-black transition duration-300">Projects</a>
-                        <a href="#contact" className="hover:text-black transition duration-300">Contact</a>
+                        <a href="#home" className="hover:text-black transition duration-300 btn btn-ghost btn-sm">
+                            Home
+                        </a>
+                        <a href="#about" className="hover:text-black transition duration-300 btn btn-ghost btn-sm">
+                            About
+                        </a>
+                        <a href="#projects" className="hover:text-black transition duration-300 btn btn-ghost btn-sm">
+                            Projects
+                        </a>
+                        <a href="#contact" className="hover:text-black transition duration-300 btn btn-ghost btn-sm">
+                            Contact
+                        </a>
                     </nav>
 
                     {/* Social Media Icons */}
@@ -26,17 +27,15 @@ const Footer = () => {
                         {[
                             { href: "https://github.com/yourprofile", icon: <FaGithub size={24} /> },
                             { href: "https://linkedin.com/in/yourprofile", icon: <FaLinkedin size={24} /> },
-                            { href: "https://twitter.com/yourprofile", icon: <FaTwitter size={24} /> }
+                            { href: "https://twitter.com/yourprofile", icon: <FaTwitter size={24} /> },
                         ].map((item, index) => (
-                            <motion.a
+                            <a
                                 key={index}
                                 href={item.href}
-                                whileHover={{ scale: 1.2, rotate: 5 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="text-gray-600 hover:text-gray-900 transition duration-300"
+                                className="text-gray-600 hover:text-gray-900 transition duration-300 btn btn-ghost btn-circle"
                             >
                                 {item.icon}
-                            </motion.a>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -46,7 +45,7 @@ const Footer = () => {
                     &copy; {new Date().getFullYear()} MyPortfolio. All rights reserved.
                 </div>
             </div>
-        </motion.footer>
+        </footer>
     );
 };
 
